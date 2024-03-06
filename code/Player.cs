@@ -76,7 +76,6 @@ public sealed class Player : Component
 
     private void updateDash()
     {
-        Log.Info(dash_timer);
         if(Input.Down("dash") && dash_timer < 0 && !in_dash){
             dash_timer = dash_cooldown;
             in_dash_timer = dash_duration;
