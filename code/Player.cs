@@ -3,6 +3,7 @@ using Sandbox;
 public sealed class Player : Component
 {
     // Player Stats
+    Statbook statbook;
     [Property] float speed = 10f;
 
     // Vectors
@@ -23,9 +24,22 @@ public sealed class Player : Component
     // Timers
     float dash_timer;
     float in_dash_timer;
+
+    // Attack pools
+    [Property] Pool projectile_pool = null;
+
+    // Attacking components
+    FireProjectile projectile_shooter = null;
     
     protected override void OnStart(){
         Log.Info("player alive");
+
+        statbook = new Statbook();
+        statbook.initialiseStats();
+
+        // Set attacking components
+        projectile_shooter = GameObject.Components.Get<FireProjectile>();
+        projectile_shooter.refreshFireProjectile(statbook, projectile_pool);
 
         // Set timers
         dash_timer = dash_cooldown;
@@ -38,6 +52,7 @@ public sealed class Player : Component
         updateMove();
         updateDash();
         updateAim();
+        updateAttack();
 
         // Increment timers
         dash_timer -= Time.Delta;
@@ -98,5 +113,13 @@ public sealed class Player : Component
     private void dashMovement()
     {
         Transform.Position = Vector3.Lerp(Transform.Position, dash_target, Time.Delta * dash_speed, true);
+    }
+
+    private void updateAttack()
+    {
+        if(Input.Down("attack")){
+            Log.Info("attack key pressed");
+            projectile_shooter.fire(aim);
+        }
     }
 }

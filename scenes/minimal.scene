@@ -91,7 +91,15 @@
           "dash_distance": 40,
           "dash_duration": 0.1,
           "dash_speed": 20,
+          "projectile_pool": {
+            "_type": "component",
+            "go": "90bc633a-b3bd-48a4-81e4-db4b6280b1a3",
+            "component_type": "Pool"
+          },
           "speed": 10
+        },
+        {
+          "__type": "FireProjectile"
         }
       ],
       "Children": [
@@ -146,6 +154,22 @@
           ]
         }
       ]
+    },
+    {
+      "Id": "90bc633a-b3bd-48a4-81e4-db4b6280b1a3",
+      "Name": "Pool",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Pool",
+          "expandable": true,
+          "pool_size": 5,
+          "prefab": {
+            "_type": "gameobject",
+            "prefab": "code/projectile_sphere.prefab"
+          }
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -171,6 +195,6 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-03-05T18:22:50.4090515\u002B11:00",
+  "LastSaved": "2024-03-07T19:44:45.4638719\u002B11:00",
   "__references": []
 }
