@@ -2,8 +2,11 @@ using Sandbox;
 
 public sealed class Player : Component
 {
+    // Debug tools
+    [Property] bool controllable = true;
+
     // Player Stats
-    [Property] Statbook statbook = null;
+    Statbook statbook;
     [Property] float speed = 10f;
 
     // Vectors
@@ -33,8 +36,9 @@ public sealed class Player : Component
     
     protected override void OnStart(){
         Log.Info("player alive");
-
+        statbook = GameObject.Components.Get<Statbook>();
         statbook.initialiseStats();
+
 
         // Set attacking components
         projectile_shooter = GameObject.Components.Get<FireProjectile>();
@@ -48,11 +52,13 @@ public sealed class Player : Component
 
     protected override void OnUpdate()
     {
-        updateMoveInput();
-        updateMove();
-        updateDash();
-        updateAim();
-        updateAttack();
+        if(controllable){
+            updateMoveInput();
+            updateMove();
+            updateDash();
+            updateAim();
+            updateAttack();
+        }
 
         // Increment timers
         dash_timer -= Time.Delta;

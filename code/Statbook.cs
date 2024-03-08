@@ -228,7 +228,15 @@ public sealed class Statbook : Component
             return statsDictionary[stat_name];
         }
         else{
+            Log.Info($"stat: {stat_name} not found");
             return null;
+        }
+    }
+
+    public void printAllStats()
+    {
+        foreach(var stat in statsDictionary){
+            Log.Info($"{stat.Key}: {stat.Value.actual_stat}");
         }
     }
 
