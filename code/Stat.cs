@@ -35,15 +35,11 @@ public sealed class Stat : Component
     {
         float stat = 0;
         foreach(var additive in additives){
-            Log.Info($"additive: {additive}");
             stat += additive;
         }
-        Log.Info($"stat after additives: {stat}");
         foreach(var multiplier in multipliers){
-            Log.Info($"multiplier: {multiplier}");
             stat *= multiplier;
         }
-        Log.Info($"stat after additives: {stat}");
         if(stat < min) { stat = min; }
         if(stat > max) { stat = max; }
 

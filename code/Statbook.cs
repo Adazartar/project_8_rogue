@@ -142,7 +142,6 @@ public sealed class Statbook : Component
 
     public void initialiseStats()
     {
-        Log.Info("stats have been initialised");
         statsDictionary["bullet_fire_rate"].min = min_bullet_fire_rate;
         statsDictionary["bullet_fire_rate"].max = max_bullet_fire_rate;
         statsDictionary["bullet_fire_rate"].setBase(base_bullet_fire_rate_multi, base_bullet_fire_rate);
@@ -226,7 +225,6 @@ public sealed class Statbook : Component
     public Stat getStat(string stat_name)
     {
         if(statsDictionary.ContainsKey(stat_name)){
-            // Log.Info($"{stat_name}: {statsDictionary[stat_name]}");
             return statsDictionary[stat_name];
         }
         else{

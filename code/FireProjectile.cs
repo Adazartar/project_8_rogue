@@ -20,13 +20,13 @@ public sealed class FireProjectile : Component
 		next_shot_timer -= Time.Delta;
 	}
 
-	public void fire(Vector3 aim)
+	public void fire(Vector3 aim, GameObject self)
 	{
 		if(next_shot_timer < 0){
 			next_shot_timer = next_shot_interval;
 			GameObject new_projectile = projectile_pool.getObject();
 			new_projectile.Transform.Position = Transform.Position;
-			new_projectile.Components.Get<Projectile>().defineProjectile(stats, aim, projectile_pool);
+			new_projectile.Components.Get<Projectile>().defineProjectile(stats, aim, projectile_pool, self);
 		}
 	}
 

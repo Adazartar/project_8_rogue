@@ -3,7 +3,7 @@ using Sandbox;
 public sealed class Player : Component
 {
     // Player Stats
-    Statbook statbook;
+    [Property] Statbook statbook = null;
     [Property] float speed = 10f;
 
     // Vectors
@@ -34,7 +34,6 @@ public sealed class Player : Component
     protected override void OnStart(){
         Log.Info("player alive");
 
-        statbook = new Statbook();
         statbook.initialiseStats();
 
         // Set attacking components
@@ -49,6 +48,7 @@ public sealed class Player : Component
 
     protected override void OnUpdate()
     {
+        updateMoveInput();
         updateMove();
         updateDash();
         updateAim();
@@ -59,7 +59,7 @@ public sealed class Player : Component
         in_dash_timer -= Time.Delta;
     }
 
-    protected override void OnFixedUpdate()
+    private void updateMove()
     {
         if(in_dash){
             dashMovement();
@@ -67,10 +67,9 @@ public sealed class Player : Component
         else{
             Transform.Position += vel * Time.Delta * speed * 100;
         }
-
     }
 
-    private void updateMove()
+    private void updateMoveInput()
 	{
 		vel = Vector3.Zero;
 		
@@ -118,8 +117,7 @@ public sealed class Player : Component
     private void updateAttack()
     {
         if(Input.Down("attack")){
-            Log.Info("attack key pressed");
-            projectile_shooter.fire(aim);
+            projectile_shooter.fire(aim, GameObject);
         }
     }
 }
