@@ -9,6 +9,12 @@ public sealed class Player : Component
     Statbook statbook;
     [Property] float speed = 10f;
 
+    // Interacting Helpers
+    [Property] float interact_cooldown = 0.3f;
+	[Property] float interact_range = 100;
+	float interact_timer;
+    [Property] GameObject interactables = null;
+
     // Vectors
     Vector3 vel = Vector3.Zero;
     Vector3 aim = Vector3.Zero;
@@ -31,14 +37,23 @@ public sealed class Player : Component
     // Attack pools
     [Property] Pool projectile_pool = null;
 
-    // Attacking components
+    // Player components
     FireProjectile projectile_shooter = null;
+    Health health = null;
+    NearbyObjects nearby_object_handler = null;
     
     protected override void OnStart(){
         Log.Info("player alive");
         statbook = GameObject.Components.Get<Statbook>();
         statbook.initialiseStats();
 
+        // Set misc components
+        nearby_object_handler = GameObject.Components.Get<NearbyObjects>();
+
+        // Set health component
+        health = GameObject.Components.Get<Health>();
+        health.updateHealthStats(statbook);
+        health.fullHeal();
 
         // Set attacking components
         projectile_shooter = GameObject.Components.Get<FireProjectile>();
@@ -126,4 +141,33 @@ public sealed class Player : Component
             projectile_shooter.fire(aim, GameObject);
         }
     }
+
+    public void updateInteract(){
+		interact_timer -= Time.Delta;
+		if(interact_timer < 0 && Input.Down("use")){
+			interact_timer = interact_cooldown;
+			List<GameObject> nearby = nearby_object_handler.getNearbyObjects(interactables.Children, interact_range);
+			interactWithClosest(nearby);
+		}
+	}
+
+    public void interactWithClosest(List<GameObject> nearby)
+	{
+		GameObject closestInteractable = null;
+        float closestDistance = 9999;
+        foreach (var interactable_object in nearby){
+			if(interactable_object.Enabled == true){
+				float distance = Transform.Position.Distance(interactable_object.Transform.Position);
+				if (distance < closestDistance){
+					closestInteractable = interactable_object;
+					closestDistance = distance;
+				}
+			}
+        }
+
+        /*if (closestInteractable != null){
+            closestInteractable.Components.Get<InteractableObject>().interact();
+			closestInteractable.Enabled = false;
+        }*/
+	}
 }

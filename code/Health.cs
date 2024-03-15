@@ -2,9 +2,7 @@ using Sandbox;
 
 public sealed class Health : Component
 {
-	bool alive = true;
-	Statbook stats;
-	
+	bool alive = true;	
 	float current_redhealth;
 	float max_redhealth;
 	float current_armour;
@@ -17,10 +15,7 @@ public sealed class Health : Component
 
 	protected override void OnStart()
 	{
-		stats = GameObject.Components.Get<Statbook>();
-		stats.printAllStats();
-		updateHealthStats();
-		fullHeal();
+
 	}
 	protected override void OnUpdate()
 	{
@@ -39,10 +34,9 @@ public sealed class Health : Component
 		}
 	}
 
-	public void updateHealthStats()
+	public void updateHealthStats(Statbook stats)
 	{
 		max_redhealth = stats.getStat("player_max_redhealth").actual_stat;
-		Log.Info($"max red health = {max_redhealth}");
 		max_armour = stats.getStat("player_max_armour").actual_stat;
 		max_whitehealth = stats.getStat("player_max_whitehealth").actual_stat;
 		max_blackhealth = stats.getStat("player_max_blackhealth").actual_stat;

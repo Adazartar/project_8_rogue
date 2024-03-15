@@ -1,15 +1,17 @@
 {
-  "Id": "9f832399-4887-46b0-8f21-2ee284f538e2",
+  "__guid": "9f832399-4887-46b0-8f21-2ee284f538e2",
   "GameObjects": [
     {
-      "Id": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
+      "__guid": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
       "Name": "Sun",
       "Rotation": "-0.0729315,0.4822396,0.1305433,0.8631827",
       "Tags": "light_directional,light",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "DirectionalLight",
+          "__guid": "133d94e9-0093-4c49-986a-cea607bb5ecf",
           "FogMode": "Disabled",
           "FogStrength": 1,
           "LightColor": "1,1,1,1",
@@ -19,18 +21,21 @@
       ]
     },
     {
-      "Id": "00344a8c-fa5e-45ae-b12a-10bb781a1dc3",
+      "__guid": "00344a8c-fa5e-45ae-b12a-10bb781a1dc3",
       "Name": "2D Skybox",
       "Tags": "skybox",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "SkyBox2D",
+          "__guid": "7640ac3b-d69c-4cab-9655-cdbe8f78201f",
           "SkyMaterial": "materials/skybox/light_test_sky_sunny03.vmat",
           "Tint": "1,1,1,1"
         },
         {
           "__type": "EnvmapProbe",
+          "__guid": "91df9e6d-3118-4d93-b6e8-f3d18d63f37a",
           "Bounds": {
             "Mins": "-512,-512,-512",
             "Maxs": "512,512,512"
@@ -43,15 +48,16 @@
       ]
     },
     {
-      "Id": "6ad70641-3c6c-4402-9c85-9a4969af4764",
+      "__guid": "6ad70641-3c6c-4402-9c85-9a4969af4764",
       "Name": "Plane",
       "Scale": "10,10,10",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "ModelRenderer",
+          "__guid": "0d6b2bbf-1f33-44c8-b903-420f3185b257",
           "BodyGroups": 18446744073709551615,
-          "MaterialGroup": null,
           "MaterialOverride": "materials/default.vmat",
           "Model": "models/dev/plane.vmdl",
           "RenderType": "On",
@@ -59,21 +65,23 @@
         },
         {
           "__type": "BoxCollider",
+          "__guid": "81b9b96a-1303-42ca-8588-d16f7f6f9fdf",
           "Center": "0,0,-5",
           "IsTrigger": false,
           "Scale": "100,100,10",
-          "Static": false,
-          "Surface": null
+          "Static": false
         }
       ]
     },
     {
-      "Id": "90bc633a-b3bd-48a4-81e4-db4b6280b1a3",
+      "__guid": "90bc633a-b3bd-48a4-81e4-db4b6280b1a3",
       "Name": "Pool",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "Pool",
+          "__guid": "3aad2abe-6e76-4f46-91c1-a62d3206f03f",
           "expandable": true,
           "pool_size": 5,
           "prefab": {
@@ -84,35 +92,37 @@
       ]
     },
     {
-      "Id": "8c131fb8-9edf-45f2-a454-a27310e1d580",
+      "__guid": "8c131fb8-9edf-45f2-a454-a27310e1d580",
       "Name": "Players",
       "Enabled": true,
+      "NetworkMode": 2,
       "Children": [
         {
-          "Id": "b284ed06-f499-40fe-abc0-102f144f9a8b",
+          "__guid": "b284ed06-f499-40fe-abc0-102f144f9a8b",
           "Name": "Player",
           "Tags": "player",
           "Enabled": true,
+          "NetworkMode": 2,
           "Components": [
             {
               "__type": "ModelRenderer",
+              "__guid": "99433358-8f9e-4544-b40b-8c5468ff6ba7",
               "BodyGroups": 18446744073709551615,
-              "MaterialGroup": null,
-              "MaterialOverride": null,
               "Model": "models/dev/sphere.vmdl",
               "RenderType": "Off",
               "Tint": "1,1,1,1"
             },
             {
               "__type": "SphereCollider",
+              "__guid": "e1a19bdd-f5d6-41bf-a215-a7f0bb6bfcdd",
               "Center": "0,0,0",
               "IsTrigger": false,
               "Radius": 25,
-              "Static": false,
-              "Surface": null
+              "Static": false
             },
             {
               "__type": "Player",
+              "__guid": "bd531106-3654-4f22-b7f9-6806baa747e7",
               "controllable": true,
               "cursor": {
                 "_type": "gameobject",
@@ -124,6 +134,7 @@
               "dash_speed": 20,
               "projectile_pool": {
                 "_type": "component",
+                "component_id": "3aad2abe-6e76-4f46-91c1-a62d3206f03f",
                 "go": "90bc633a-b3bd-48a4-81e4-db4b6280b1a3",
                 "component_type": "Pool"
               },
@@ -131,6 +142,7 @@
             },
             {
               "__type": "Statbook",
+              "__guid": "ec9a8bdd-dc04-4b00-8c04-cab5ca54bdb8",
               "base_bullet_accuracy": 1,
               "base_bullet_accuracy_multi": 1,
               "base_bullet_count": 1,
@@ -210,23 +222,27 @@
               "min_player_speed": 0
             },
             {
-              "__type": "FireProjectile"
+              "__type": "FireProjectile",
+              "__guid": "88b533e1-a6fe-423a-9a40-9c4e19456e4d"
             },
             {
-              "__type": "Health"
+              "__type": "Health",
+              "__guid": "47d2872a-1296-4996-b23c-b7d0fd1ec73c"
             }
           ],
           "Children": [
             {
-              "Id": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
+              "__guid": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
               "Name": "Camera",
               "Position": "0,0,100",
               "Rotation": "0,0.7071068,0,0.7071068",
               "Tags": "skybox",
               "Enabled": true,
+              "NetworkMode": 2,
               "Components": [
                 {
                   "__type": "CameraComponent",
+                  "__guid": "e40a9f39-27f1-4fe7-98c6-1d08120538d7",
                   "BackgroundColor": "0.33333,0.46275,0.52157,1",
                   "ClearFlags": "All",
                   "FieldOfView": 60,
@@ -244,22 +260,23 @@
               ]
             },
             {
-              "Id": "7149982b-9134-40c8-8031-7c9e485f97a8",
+              "__guid": "7149982b-9134-40c8-8031-7c9e485f97a8",
               "Name": "Cursor",
               "Scale": "0.5,0.5,0.5",
               "Enabled": true,
+              "NetworkMode": 2,
               "Components": [
                 {
                   "__type": "ModelRenderer",
+                  "__guid": "51867f21-4a4e-4a8b-946c-152872736454",
                   "BodyGroups": 18446744073709551615,
-                  "MaterialGroup": null,
-                  "MaterialOverride": null,
                   "Model": "models/dev/sphere.vmdl",
                   "RenderType": "Off",
                   "Tint": "1,0,0,1"
                 },
                 {
                   "__type": "Cursor",
+                  "__guid": "d0816017-12ba-4615-ba6e-e9cdab17150c",
                   "player": {
                     "_type": "gameobject",
                     "go": "b284ed06-f499-40fe-abc0-102f144f9a8b"
@@ -270,31 +287,31 @@
           ]
         },
         {
-          "Id": "9c70be90-9fd4-4594-b6c1-b555e933a224",
+          "__guid": "9c70be90-9fd4-4594-b6c1-b555e933a224",
           "Name": "Target Dummy",
           "Position": "227.8837,0,0",
           "Tags": "player",
-          "Enabled": true,
+          "NetworkMode": 2,
           "Components": [
             {
               "__type": "ModelRenderer",
+              "__guid": "7c8c166b-cfcd-47cc-9a30-b73e710b9f95",
               "BodyGroups": 18446744073709551615,
-              "MaterialGroup": null,
-              "MaterialOverride": null,
               "Model": "models/dev/sphere.vmdl",
               "RenderType": "Off",
               "Tint": "1,1,1,1"
             },
             {
               "__type": "SphereCollider",
+              "__guid": "7af09ac8-0d74-4186-836e-79dbd3bf5bc8",
               "Center": "0,0,0",
               "IsTrigger": false,
               "Radius": 25,
-              "Static": false,
-              "Surface": null
+              "Static": false
             },
             {
               "__type": "Player",
+              "__guid": "ecbc4de0-68b1-45eb-9847-546f9779353d",
               "controllable": false,
               "cursor": {
                 "_type": "gameobject",
@@ -306,6 +323,7 @@
               "dash_speed": 20,
               "projectile_pool": {
                 "_type": "component",
+                "component_id": "3aad2abe-6e76-4f46-91c1-a62d3206f03f",
                 "go": "90bc633a-b3bd-48a4-81e4-db4b6280b1a3",
                 "component_type": "Pool"
               },
@@ -313,6 +331,7 @@
             },
             {
               "__type": "Statbook",
+              "__guid": "e675b03a-b33d-4c02-9af0-3a207c0f965c",
               "base_bullet_accuracy": 1,
               "base_bullet_accuracy_multi": 1,
               "base_bullet_count": 1,
@@ -392,23 +411,27 @@
               "min_player_speed": 0
             },
             {
-              "__type": "FireProjectile"
+              "__type": "FireProjectile",
+              "__guid": "984be1fe-5aa0-41cc-a3ef-25525e6b02b6"
             },
             {
-              "__type": "Health"
+              "__type": "Health",
+              "__guid": "0c7eae7b-1195-4e6b-b6d4-0dd42b292c98"
             }
           ],
           "Children": [
             {
-              "Id": "078e753b-1bb0-414f-a5f7-b40e2d9b78d4",
+              "__guid": "078e753b-1bb0-414f-a5f7-b40e2d9b78d4",
               "Name": "Camera",
               "Position": "0,0,100",
               "Rotation": "0,0.7071068,0,0.7071068",
               "Tags": "skybox",
               "Enabled": true,
+              "NetworkMode": 2,
               "Components": [
                 {
                   "__type": "CameraComponent",
+                  "__guid": "49453d25-f6e0-4f1d-92dd-3e8b67a623e4",
                   "BackgroundColor": "0.33333,0.46275,0.52157,1",
                   "ClearFlags": "All",
                   "FieldOfView": 60,
@@ -426,23 +449,24 @@
               ]
             },
             {
-              "Id": "195199a5-9cdf-47a5-a03f-83ec781a258a",
+              "__guid": "195199a5-9cdf-47a5-a03f-83ec781a258a",
               "Name": "Cursor",
               "Position": "0,0,0",
               "Scale": "0.5,0.5,0.5",
               "Enabled": true,
+              "NetworkMode": 2,
               "Components": [
                 {
                   "__type": "ModelRenderer",
+                  "__guid": "9b441071-56af-4873-abbc-04def87d1f47",
                   "BodyGroups": 18446744073709551615,
-                  "MaterialGroup": null,
-                  "MaterialOverride": null,
                   "Model": "models/dev/sphere.vmdl",
                   "RenderType": "Off",
                   "Tint": "1,0,0,1"
                 },
                 {
                   "__type": "Cursor",
+                  "__guid": "a3822878-9f62-416b-a31b-2391d776203e",
                   "player": {
                     "_type": "gameobject",
                     "go": "9c70be90-9fd4-4594-b6c1-b555e933a224"
@@ -478,6 +502,8 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-03-08T15:12:10.0428139\u002B11:00",
+  "LastSaved": "2024-03-15T23:28:14.9195288\u002B11:00",
+  "ResourceVersion": 1,
+  "__version": 1,
   "__references": []
 }
