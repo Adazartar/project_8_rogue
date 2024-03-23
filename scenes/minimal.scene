@@ -74,24 +74,6 @@
       ]
     },
     {
-      "__guid": "90bc633a-b3bd-48a4-81e4-db4b6280b1a3",
-      "Name": "Pool",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "Components": [
-        {
-          "__type": "Pool",
-          "__guid": "3aad2abe-6e76-4f46-91c1-a62d3206f03f",
-          "expandable": true,
-          "pool_size": 5,
-          "prefab": {
-            "_type": "gameobject",
-            "prefab": "code/projectile_sphere.prefab"
-          }
-        }
-      ]
-    },
-    {
       "__guid": "8c131fb8-9edf-45f2-a454-a27310e1d580",
       "Name": "Players",
       "Enabled": true,
@@ -132,6 +114,12 @@
               "dash_distance": 40,
               "dash_duration": 0.1,
               "dash_speed": 20,
+              "interact_cooldown": 0.3,
+              "interact_range": 100,
+              "pickups": {
+                "_type": "gameobject",
+                "go": "547a5412-f58b-414a-994c-d39efc7f7af0"
+              },
               "projectile_pool": {
                 "_type": "component",
                 "component_id": "3aad2abe-6e76-4f46-91c1-a62d3206f03f",
@@ -228,6 +216,10 @@
             {
               "__type": "Health",
               "__guid": "47d2872a-1296-4996-b23c-b7d0fd1ec73c"
+            },
+            {
+              "__type": "NearbyObjects",
+              "__guid": "bf91b636-d675-41fe-bd57-23b75b8d3181"
             }
           ],
           "Children": [
@@ -283,6 +275,25 @@
                   }
                 }
               ]
+            },
+            {
+              "__guid": "90bc633a-b3bd-48a4-81e4-db4b6280b1a3",
+              "Name": "Pool",
+              "Position": "0,0,1000",
+              "Enabled": true,
+              "NetworkMode": 2,
+              "Components": [
+                {
+                  "__type": "Pool",
+                  "__guid": "3aad2abe-6e76-4f46-91c1-a62d3206f03f",
+                  "expandable": true,
+                  "pool_size": 5,
+                  "prefab": {
+                    "_type": "gameobject",
+                    "prefab": "code/projectile_sphere.prefab"
+                  }
+                }
+              ]
             }
           ]
         },
@@ -321,6 +332,8 @@
               "dash_distance": 40,
               "dash_duration": 0.1,
               "dash_speed": 20,
+              "interact_cooldown": 0.3,
+              "interact_range": 100,
               "projectile_pool": {
                 "_type": "component",
                 "component_id": "3aad2abe-6e76-4f46-91c1-a62d3206f03f",
@@ -477,6 +490,38 @@
           ]
         }
       ]
+    },
+    {
+      "__guid": "547a5412-f58b-414a-994c-d39efc7f7af0",
+      "Name": "Powerup Manager",
+      "Position": "0,0,2000",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "Pool",
+          "__guid": "9148c5e9-01e9-4461-9ec1-0cb8cc2622dc",
+          "expandable": true,
+          "pool_size": 50,
+          "prefab": {
+            "_type": "gameobject",
+            "prefab": "code/powerup.prefab"
+          }
+        },
+        {
+          "__type": "StatPowerupBank",
+          "__guid": "91f14e9c-7dec-41c7-8a50-1a176e16762d",
+          "pickup_pool": {
+            "_type": "component",
+            "component_id": "9148c5e9-01e9-4461-9ec1-0cb8cc2622dc",
+            "go": "547a5412-f58b-414a-994c-d39efc7f7af0",
+            "component_type": "Pool"
+          },
+          "spawn_gap": 3,
+          "x_limit": 500,
+          "y_limit": 500
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -502,7 +547,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-03-15T23:28:14.9195288\u002B11:00",
+  "LastSaved": "2024-03-23T12:19:14.0219845\u002B11:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []

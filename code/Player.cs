@@ -13,7 +13,8 @@ public sealed class Player : Component
     [Property] float interact_cooldown = 0.3f;
 	[Property] float interact_range = 100;
 	float interact_timer;
-    [Property] GameObject interactables = null;
+    [Property] GameObject pickups = null;
+    Pool pickup_pool;
 
     // Vectors
     Vector3 vel = Vector3.Zero;
@@ -62,6 +63,9 @@ public sealed class Player : Component
         // Set timers
         dash_timer = dash_cooldown;
 
+        // Set interacting components
+        pickup_pool = pickups.Components.Get<Pool>();
+
         
     }
 
@@ -73,6 +77,7 @@ public sealed class Player : Component
             updateDash();
             updateAim();
             updateAttack();
+            updateInteract();
         }
 
         // Increment timers
@@ -146,7 +151,7 @@ public sealed class Player : Component
 		interact_timer -= Time.Delta;
 		if(interact_timer < 0 && Input.Down("use")){
 			interact_timer = interact_cooldown;
-			List<GameObject> nearby = nearby_object_handler.getNearbyObjects(interactables.Children, interact_range);
+			List<GameObject> nearby = nearby_object_handler.getNearbyObjects(pickups.Children, interact_range);
 			interactWithClosest(nearby);
 		}
 	}
@@ -165,9 +170,11 @@ public sealed class Player : Component
 			}
         }
 
-        /*if (closestInteractable != null){
-            closestInteractable.Components.Get<InteractableObject>().interact();
+        if (closestInteractable != null){
+            closestInteractable.Components.Get<StatPowerup>().interact();
+            closestInteractable.Parent = null;
+            pickup_pool.returnObject(closestInteractable);
 			closestInteractable.Enabled = false;
-        }*/
+        }
 	}
 }

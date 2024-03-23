@@ -1,0 +1,27 @@
+{
+  "RootObject": {
+    "__guid": "afc75a04-c4e1-4ab7-887d-e4a119dbe845",
+    "Name": "powerup",
+    "Enabled": true,
+    "NetworkMode": 2,
+    "Components": [
+      {
+        "__type": "StatPowerup",
+        "__guid": "d7e84a11-84be-4ff1-a7e6-e60513abb40e"
+      },
+      {
+        "__type": "ModelRenderer",
+        "__guid": "8febe782-5ff2-4607-91db-1c9d3f46574a",
+        "BodyGroups": 18446744073709551615,
+        "RenderType": "Off",
+        "Tint": "1,1,1,1"
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
+  "__references": []
+}
