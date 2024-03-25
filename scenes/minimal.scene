@@ -82,7 +82,7 @@
         {
           "__guid": "b284ed06-f499-40fe-abc0-102f144f9a8b",
           "Name": "Player",
-          "Tags": "player",
+          "Tags": "player,hittable",
           "Enabled": true,
           "NetworkMode": 2,
           "Components": [
@@ -140,7 +140,7 @@
               "base_bullet_fire_rate": 10,
               "base_bullet_fire_rate_multi": 1,
               "base_bullet_piercing": false,
-              "base_bullet_range": 30,
+              "base_bullet_range": 10,
               "base_bullet_range_multi": 1,
               "base_bullet_size": 1,
               "base_bullet_size_multi": 1,
@@ -301,7 +301,8 @@
           "__guid": "9c70be90-9fd4-4594-b6c1-b555e933a224",
           "Name": "Target Dummy",
           "Position": "227.8837,0,0",
-          "Tags": "player",
+          "Tags": "player,hittable",
+          "Enabled": true,
           "NetworkMode": 2,
           "Components": [
             {
@@ -547,7 +548,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-03-23T12:19:14.0219845\u002B11:00",
+  "LastSaved": "2024-03-25T18:03:07.4866783\u002B11:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []

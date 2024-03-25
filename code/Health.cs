@@ -2,6 +2,8 @@ using Sandbox;
 
 public sealed class Health : Component
 {
+	Player player;
+	StatPowerup powerup;
 	bool alive = true;	
 	float current_redhealth;
 	float max_redhealth;
@@ -15,7 +17,12 @@ public sealed class Health : Component
 
 	protected override void OnStart()
 	{
-
+		if(GameObject.Tags.Has("player")){
+			player = GameObject.Components.Get<Player>();
+		}
+		else{
+			powerup = GameObject.Components.Get<StatPowerup>();
+		}
 	}
 	protected override void OnUpdate()
 	{
@@ -57,6 +64,26 @@ public sealed class Health : Component
 		if(current_health <= 0){
 			alive = false;
 			Log.Info("player is now dead");
+			notifyDead();
+		}
+	}
+
+	public void setBoxHealth(float health)
+	{
+		max_redhealth = health;
+		max_armour = 0;
+		max_whitehealth = 0;
+		max_blackhealth = 0;
+	}
+
+	public void notifyDead()
+	{
+		if(player != null){
+			player.dead();
+		}
+
+		if(powerup != null){
+			powerup.destroy();
 		}
 	}
 

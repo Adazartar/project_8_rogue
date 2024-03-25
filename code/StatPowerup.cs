@@ -8,6 +8,23 @@ public sealed class StatPowerup : Component
     public float[] multiplier;
     public string rarity;
 
+    public bool broken = false;
+    GameObject box;
+    GameObject item;
+    Health health;
+
+    protected override void OnStart(){
+        health = GameObject.Components.Get<Health>();
+        foreach(var child in GameObject.Children){
+            if(child.Name == "Box"){
+                box = child;
+            }
+            else{
+                item = child;
+            }
+        }
+    }
+
     protected override void OnUpdate(){
 
     }
@@ -30,8 +47,14 @@ public sealed class StatPowerup : Component
         rarity = in_stat.rarity;
     }
 
-    public void interact(){
+    public void interact()
+    {
         Log.Info("picked up " +name);
+    }
+
+    public void destroy()
+    {
+
     }
 
 }

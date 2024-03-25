@@ -147,7 +147,8 @@ public sealed class Player : Component
         }
     }
 
-    public void updateInteract(){
+    public void updateInteract()
+    {
 		interact_timer -= Time.Delta;
 		if(interact_timer < 0 && Input.Down("use")){
 			interact_timer = interact_cooldown;
@@ -177,4 +178,9 @@ public sealed class Player : Component
 			closestInteractable.Enabled = false;
         }
 	}
+
+    public void dead()
+    {
+
+    }
 }

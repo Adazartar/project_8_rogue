@@ -13,6 +13,7 @@ public sealed class StatPowerupBank : Component
     [Property] float x_limit = 100;
     [Property] float y_limit = 100;
     [Property] float spawn_gap = 1;
+    [Property] float box_health = 10;
 
     [Property] Pool pickup_pool = null;
 
@@ -74,8 +75,22 @@ public sealed class StatPowerupBank : Component
             Vector3 spawn_loc = new Vector3(x_coord, y_coord, 0);
             GameObject new_pickup = pickup_pool.getObject();
             new_pickup.SetParent(GameObject, true);
+
             StatPowerup new_pickup_stat = new_pickup.Components.Get<StatPowerup>();
             new_pickup_stat.setStatPowerup(getItem());
+            Health new_pickup_health = new_pickup.Components.Get<Health>();
+            new_pickup_health.setBoxHealth(box_health);
+            new_pickup_health.fullHeal();
+
+            foreach(var child in new_pickup.Children){
+                if(child.Name == "Box"){
+                    child.Enabled = true;
+                }
+                else{
+                    child.Enabled = false;
+                }
+            }
+
 			new_pickup.Transform.Position = spawn_loc;
         }
     }

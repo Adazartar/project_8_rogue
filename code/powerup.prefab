@@ -1,20 +1,59 @@
 {
   "RootObject": {
-    "__guid": "afc75a04-c4e1-4ab7-887d-e4a119dbe845",
+    "__guid": "fc1f08fc-3701-44a5-8885-85814d6b68b1",
     "Name": "powerup",
+    "Tags": "hittable",
     "Enabled": true,
     "NetworkMode": 2,
     "Components": [
       {
         "__type": "StatPowerup",
-        "__guid": "d7e84a11-84be-4ff1-a7e6-e60513abb40e"
+        "__guid": "6295f88e-89fb-48cf-b6f1-b5aa46a36091"
       },
       {
-        "__type": "ModelRenderer",
-        "__guid": "8febe782-5ff2-4607-91db-1c9d3f46574a",
-        "BodyGroups": 18446744073709551615,
-        "RenderType": "Off",
-        "Tint": "1,1,1,1"
+        "__type": "Health",
+        "__guid": "b5bfcd5a-070e-46cc-86b3-79a01609b882"
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "0ba3214e-11d0-471e-ba3e-3f7b05ec52f5",
+        "Name": "Box",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "ModelRenderer",
+            "__guid": "ad5ef06e-4426-4fc5-bf88-53a14b42f007",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/dev/box.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          },
+          {
+            "__type": "BoxCollider",
+            "__guid": "db8fc33c-f8cb-4da2-a6ec-dd86bf98f9b4",
+            "Center": "0,0,0",
+            "IsTrigger": false,
+            "Scale": "50,50,50",
+            "Static": false
+          }
+        ]
+      },
+      {
+        "__guid": "c65f2a30-bfe0-4e28-a4fd-1838e81dcf20",
+        "Name": "Item",
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "ModelRenderer",
+            "__guid": "aff62677-471b-4bd0-847e-622c4a69e8a5",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/dev/sphere.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
       }
     ]
   },

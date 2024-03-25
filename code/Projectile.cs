@@ -31,10 +31,10 @@ public sealed class Projectile : Component, Component.ITriggerListener
 
 	public void OnTriggerEnter(Collider other)
 	{
-		var hit_player = other.GameObject;
-		if(hit_player != null && hit_player.Tags.Has("player") && hit_player != parent_player){
+		var hit_target = other.GameObject;
+		if(hit_target != null && hit_target.Tags.Has("hittable") && hit_target != parent_player){
 			Log.Info("we have hit another player");
-			hit_player.Components.Get<Health>().handleHit(bullet_stats, true);
+			hit_target.Components.Get<Health>().handleHit(bullet_stats, true);
 			parent_player.Components.Get<Health>().handleHit(bullet_stats, false);
 		}
 	}

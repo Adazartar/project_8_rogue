@@ -1,30 +1,43 @@
 {
   "RootObject": {
-    "Id": "16f36484-d3d8-4c8a-bb1d-d4e3db58a55f",
+    "__guid": "f33dac50-0a5a-41ee-b94b-544dc8fd5283",
     "Name": "projectile_sphere",
     "Scale": "0.5,0.5,0.5",
     "Tags": "attack",
     "Enabled": true,
+    "NetworkMode": 2,
     "Components": [
       {
         "__type": "ModelRenderer",
+        "__guid": "9ce80a80-1f6d-4e25-8914-5e9c49cfd336",
         "BodyGroups": 18446744073709551615,
-        "MaterialGroup": null,
-        "MaterialOverride": null,
         "Model": "models/dev/sphere.vmdl",
         "RenderType": "Off",
         "Tint": "1,1,1,1"
       },
       {
-        "__type": "Projectile"
+        "__type": "Projectile",
+        "__guid": "a320a345-7414-4203-8849-ae87e7b0e524"
       },
       {
         "__type": "SphereCollider",
+        "__guid": "196a02ce-bc98-49ef-94c5-5ea720f67091",
         "Center": "0,0,0",
         "IsTrigger": true,
         "Radius": 10,
-        "Static": false,
-        "Surface": null
+        "Static": false
+      },
+      {
+        "__type": "Rigidbody",
+        "__guid": "e3e7c58c-b5ac-4926-9c4a-e298002c13c5",
+        "AngularDamping": 0,
+        "Gravity": false,
+        "LinearDamping": 0,
+        "Locking": {},
+        "MassOverride": 0,
+        "MotionEnabled": true,
+        "RigidbodyFlags": 0,
+        "StartAsleep": false
       }
     ],
     "Children": []
@@ -32,5 +45,7 @@
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
   "__references": []
 }
