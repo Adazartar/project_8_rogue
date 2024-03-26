@@ -2,23 +2,19 @@
   "RootObject": {
     "__guid": "fc1f08fc-3701-44a5-8885-85814d6b68b1",
     "Name": "powerup",
-    "Tags": "hittable",
     "Enabled": true,
     "NetworkMode": 2,
     "Components": [
       {
         "__type": "StatPowerup",
         "__guid": "6295f88e-89fb-48cf-b6f1-b5aa46a36091"
-      },
-      {
-        "__type": "Health",
-        "__guid": "b5bfcd5a-070e-46cc-86b3-79a01609b882"
       }
     ],
     "Children": [
       {
         "__guid": "0ba3214e-11d0-471e-ba3e-3f7b05ec52f5",
         "Name": "Box",
+        "Tags": "box,hittable",
         "Enabled": true,
         "NetworkMode": 2,
         "Components": [
@@ -37,12 +33,18 @@
             "IsTrigger": false,
             "Scale": "50,50,50",
             "Static": false
+          },
+          {
+            "__type": "Health",
+            "__guid": "3479c6fe-7cb9-499e-8c74-012fcc97b90d"
           }
         ]
       },
       {
         "__guid": "c65f2a30-bfe0-4e28-a4fd-1838e81dcf20",
-        "Name": "Item",
+        "Name": "Powerup",
+        "Tags": "powerup",
+        "Enabled": true,
         "NetworkMode": 2,
         "Components": [
           {
@@ -50,8 +52,8 @@
             "__guid": "aff62677-471b-4bd0-847e-622c4a69e8a5",
             "BodyGroups": 18446744073709551615,
             "Model": "models/dev/sphere.vmdl",
-            "RenderType": "On",
-            "Tint": "1,1,1,1"
+            "RenderType": "Off",
+            "Tint": "0.44123,0.90233,0.03777,1"
           }
         ]
       }

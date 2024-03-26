@@ -4,7 +4,7 @@ public sealed class Health : Component
 {
 	Player player;
 	StatPowerup powerup;
-	bool alive = true;	
+	public bool alive = true;	
 	float current_redhealth;
 	float max_redhealth;
 	float current_armour;
@@ -21,7 +21,8 @@ public sealed class Health : Component
 			player = GameObject.Components.Get<Player>();
 		}
 		else{
-			powerup = GameObject.Components.Get<StatPowerup>();
+			// Health component exists on the box not the entire stat powerup object
+			powerup = GameObject.Parent.Components.Get<StatPowerup>();
 		}
 	}
 	protected override void OnUpdate()
@@ -60,10 +61,10 @@ public sealed class Health : Component
 	public void checkAlive()
 	{
 		current_health = current_redhealth + current_armour + current_whitehealth + current_blackhealth;
-		Log.Info($"player hit, current health is now: {current_health}");
+		// Log.Info($"player hit, current health is now: {current_health}");
 		if(current_health <= 0){
 			alive = false;
-			Log.Info("player is now dead");
+			// Log.Info("player is now dead");
 			notifyDead();
 		}
 	}

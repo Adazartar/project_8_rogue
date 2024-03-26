@@ -33,7 +33,7 @@ public sealed class Projectile : Component, Component.ITriggerListener
 	{
 		var hit_target = other.GameObject;
 		if(hit_target != null && hit_target.Tags.Has("hittable") && hit_target != parent_player){
-			Log.Info("we have hit another player");
+			// Log.Info("we have hit another player");
 			hit_target.Components.Get<Health>().handleHit(bullet_stats, true);
 			parent_player.Components.Get<Health>().handleHit(bullet_stats, false);
 		}

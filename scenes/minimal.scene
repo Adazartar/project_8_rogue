@@ -302,7 +302,6 @@
           "Name": "Target Dummy",
           "Position": "227.8837,0,0",
           "Tags": "player,hittable",
-          "Enabled": true,
           "NetworkMode": 2,
           "Components": [
             {
@@ -512,6 +511,7 @@
         {
           "__type": "StatPowerupBank",
           "__guid": "91f14e9c-7dec-41c7-8a50-1a176e16762d",
+          "box_health": 10,
           "pickup_pool": {
             "_type": "component",
             "component_id": "9148c5e9-01e9-4461-9ec1-0cb8cc2622dc",
@@ -548,7 +548,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-03-25T18:03:07.4866783\u002B11:00",
+  "LastSaved": "2024-03-26T20:17:12.606799\u002B11:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []

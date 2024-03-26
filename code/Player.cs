@@ -171,7 +171,7 @@ public sealed class Player : Component
 			}
         }
 
-        if (closestInteractable != null){
+        if (closestInteractable != null && closestInteractable.Components.Get<StatPowerup>().interactable){
             closestInteractable.Components.Get<StatPowerup>().interact();
             closestInteractable.Parent = null;
             pickup_pool.returnObject(closestInteractable);
